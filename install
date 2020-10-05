@@ -5,6 +5,8 @@ THIS_DIR=${THIS_SCRIPT%/*}
 
 # ----------------------------------------------
 
+set -x
+
 mklnk ()
 {
     local tgt=$1
@@ -16,14 +18,19 @@ mklnk ()
 
 doit ()
 {
+    local HOSTNAME=$(hostname)
     local HOMEDIRREPO=${THIS_DIR}/home
 
     mklnk ${HOMEDIRREPO}/_vimrc ${HOME}/.vimrc
-
-    mklnk ${HOMEDIRREPO}/_Xmodmap ${HOME}/.Xmodmap
-    mklnk ${HOMEDIRREPO}/openbox-rc.xml ${HOME}/.config/openbox/lubuntu-rc.xml
-
     mklnk ${HOMEDIRREPO}/_gitconfig ${HOME}/.gitconfig
+
+    if [ ${HOSTNAME} = "prune3" ]; then
+        mklnk ${HOMEDIRREPO}/_Xmodmap--s130 ${HOME}/.Xmodmap
+        mklnk ${HOMEDIRREPO}/openbox-rc--s130.xml ${HOME}/.config/openbox/rc.xml
+    else
+        mklnk ${HOMEDIRREPO}/_Xmodmap ${HOME}/.Xmodmap
+        mklnk ${HOMEDIRREPO}/openbox-rc.xml ${HOME}/.config/openbox/lubuntu-rc.xml
+    fi
 }
 
 ##
