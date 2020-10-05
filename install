@@ -1,0 +1,31 @@
+#!/bin/sh
+
+THIS_SCRIPT=$(readlink -f ${BASH_ARGV0:=$0})
+THIS_DIR=${THIS_SCRIPT%/*}
+
+# ----------------------------------------------
+
+mklnk ()
+{
+    local tgt=$1
+    local lnk=$2
+
+    mkdir -p $(dirname ${lnk})
+    ln -sf ${tgt} ${lnk}
+}
+
+doit ()
+{
+    local HOMEDIRREPO=${THIS_DIR}/home
+
+    mklnk ${HOMEDIRREPO}/_vimrc ${HOME}/.vimrc
+
+    mklnk ${HOMEDIRREPO}/_Xmodmap ${HOME}/.Xmodmap
+    mklnk ${HOMEDIRREPO}/openbox-rc.xml ${HOME}/.config/openbox/lubuntu-rc.xml
+
+    mklnk ${HOMEDIRREPO}/_gitconfig ${HOME}/.gitconfig
+}
+
+##
+
+doit

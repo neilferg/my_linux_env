@@ -1,0 +1,46 @@
+[user]
+	name = neilferg
+	email = neilferg@calnexsol.com
+[core]
+	autoclrf = true
+	fileMode = false
+	editor = vi
+[cola]
+	fontdiff = Ubuntu Mono,9,-1,5,50,0,0,0,0,0
+	linebreak = false
+	textwidth = 115
+	tabwidth = 4
+	spellcheck = false
+[push]
+	default = simple
+[pull]
+	rebase = true
+[merge]
+	tool = kdiff3noauto
+[mergetool "kdiff3NoAuto"]
+	cmd = kdiff3 --L1 \"$MERGED (Base)\" --L2 \"$MERGED (Local)\" --L3 \"$MERGED (Remote)\" -o \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = meld
+[gui]
+	editor = vi
+	historybrowser = gitk
+
+[alias]
+    oldest-ancestor = !bash -c 'diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+    h = log --pretty=format:\"%Cgreen%h%Creset - %C(bold yellow)(%<(12)%ar)%Creset %C(cyan)%<(60,trunc)%s%Creset %C(dim white)[%<(15,trunc)%an]%Creset %C(bold white)%d\" --date=short
+    gr = log --pretty=format:\"%Cgreen%h%Creset - %C(dim white)%ad %C(dim yellow)(%ar)                                  %C(bold white)%d%n          %C(bold cyan)%<(60,trunc)%s %C(dim white)%an\" --graph
+    co = checkout
+    cob = checkout -b
+    cp = cherry-pick
+    ci = commit
+    st = status
+    br = branch
+    le = log --oneline --decorate
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    mt = mergtool
+    dt = difftool
+	conflicts = diff --name-only --diff-filter=U
