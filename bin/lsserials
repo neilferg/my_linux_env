@@ -1,0 +1,30 @@
+#!/bin/sh
+
+lsserials ()
+{
+    local bus
+    local device
+
+    lsusb |
+    while read -r line; do
+        if [ "${line}" != "${line##*Serial}" ]; then
+            bus=${line#Bus }
+            bus=${bus%% *}
+
+            device=${line#*Device }
+            device=${device%%:*}
+
+            id=${line#*ID }
+            id=${id%% *}
+
+            serialno=$(sudo lsusb -D /dev/bus/usb/${bus}/${device} | fgrep 'iSerial')
+            serialno=${serialno##* }
+            echo "${bus}/${device}: ${id} ${serialno}"
+        fi
+    done
+}
+
+##
+
+lsserials
+
