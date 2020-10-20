@@ -1,0 +1,51 @@
+#!/bin/sh
+
+doit ()
+{
+    local jobfile=$1
+    local tgt=$2
+
+    local now="$(date +"%Y/%m/%d %H:%M")"
+    local now_s=$(date -d "${now}" +"%s")
+
+    local tgt_s=$(date -d "${tgt}" +"%s")
+
+    local secs=$((tgt_s - now_s))
+
+    if [ ${secs} -lt 0 ]; then
+        tgt_s=$((tgt_s + 86400))
+        secs=$((tgt_s - now_s))
+    fi
+
+    if [ ${secs} -lt 0 ]; then
+        echo "ERROR: Illegal target date:"
+        exit 1
+    fi
+
+    echo "sleeping for ${secs} secs (waking @ $(date -d @${tgt_s}))"
+    sleep ${secs}
+
+    set -x
+    . ${jobfile}
+}
+
+##
+
+time="00:15"
+
+OPTIND=1
+while getopts "t:" _opt; do
+    case "${_opt}" in
+        t)
+           time=${OPTARG}
+           ;;
+        *)
+           exit 1
+           ;;
+    esac
+done
+shift $((OPTIND - 1))
+
+doit ~/.at_job "${time}"
+echo "DONE"
+
