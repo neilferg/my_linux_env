@@ -24,6 +24,12 @@ doit ()
     mklnk ${HOMEDIRREPO}/_vimrc ${HOME}/.vimrc
     mklnk ${HOMEDIRREPO}/_gitconfig ${HOME}/.gitconfig
 
+
+    local vscode=${HOME}/.config/Code/User
+    mkdir -p ${vscode}
+    mklnk ${HOMEDIRREPO}/_config/Code/User/settings.json ${vscode}/settings.json 
+    mklnk ${HOMEDIRREPO}/_config/Code/User/keybindings.json ${vscode}/keybindings.json 
+
     if [ ${HOSTNAME} = "prune3" ]; then
         mklnk ${HOMEDIRREPO}/_Xmodmap--s130 ${HOME}/.Xmodmap
         mklnk ${HOMEDIRREPO}/openbox-rc--s130.xml ${HOME}/.config/openbox/rc.xml

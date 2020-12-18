@@ -1,0 +1,14 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "update.mode": "manual",
+    "extensions.autoCheckUpdates": false,
+    "extensions.autoUpdate": false,
+    "npm.fetchOnlinePackageInfo": false,
+    "settingsSync.keybindingsPerPlatform": false,
+    "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "matlab.mlintpath": "/bin/true",
+    "workbench.colorTheme": "Eclipse Color Theme",
+    
+}
