@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../../ota2/mat2cpp"
+		},
+		{
+			"path": "../../matlab2cpp"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.in": "makefile",
+			"Makefile.*": "makefile",
+			"*.mk": "makefile",
+			"armadillo": "cpp",
+			"iostream": "cpp"
+		}
+	}
+}
