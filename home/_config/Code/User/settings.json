@@ -10,5 +10,6 @@
     "workbench.settings.enableNaturalLanguageSearch": false,
     "matlab.mlintpath": "/bin/true",
     "workbench.colorTheme": "Eclipse Color Theme",
+    "C_Cpp.clang_format_sortIncludes": false,
     
 }

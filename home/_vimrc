@@ -1,2 +1,26 @@
 set nocompatible
 set tabstop=4
+
+set fillchars=fold:-,diff:/
+
+hi DiffAdd      gui=none    guifg=NONE          guibg=#e8ffd1
+hi DiffChange   gui=none    guifg=NONE          guibg=#ADD8E6
+hi DiffDelete   gui=bold    guifg=#000000       guibg=#E6E6FA
+hi DiffText     gui=none    guifg=#D20000       guibg=#FFD2C8
+
+if &diff
+    source $VIMRUNTIME/evim.vim
+
+    set lines=35
+    set columns=130
+    syntax off
+    set noshowmode
+    set number
+
+    set diffopt=internal,filler,context:1000000
+    set diffopt+=algorithm:histogram
+    set diffopt+=indent-heuristic
+    " set diffopt+=iwhiteall
+
+    autocmd VimResized * exec "normal \<C-w>="
+endif

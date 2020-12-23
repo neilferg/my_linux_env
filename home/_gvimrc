@@ -1,0 +1,16 @@
+
+if &diff
+    aunmenu ToolBar
+
+    an 1.30 ToolBar.SaveAll   :browse confirm wa<CR>
+    tmenu ToolBar.SaveAll     Save all files
+
+    an 1.45 ToolBar.-sep1-    <Nop>
+
+    amenu 1.220 ToolBar.NextDiff ]c
+    tmenu ToolBar.NextDiff Next diff
+
+    amenu 1.230 ToolBar.PrevDiff [c
+    tmenu ToolBar.PrevDiff Next diff
+
+endif

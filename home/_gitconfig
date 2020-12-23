@@ -16,11 +16,18 @@
 [pull]
 	rebase = true
 [merge]
-	tool = kdiff3noauto
+	tool = diffmerge
 [mergetool "kdiff3NoAuto"]
 	cmd = kdiff3 --L1 \"$MERGED (Base)\" --L2 \"$MERGED (Local)\" --L3 \"$MERGED (Remote)\" -o \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+[mergetool "diffmerge"]
+	trustExitCode = true
+        keepBackup = false
+	prompt = false
+	cmd = diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [diff]
-	tool = meld
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [gui]
 	editor = vi
 	historybrowser = gitk

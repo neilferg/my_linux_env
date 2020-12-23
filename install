@@ -22,7 +22,10 @@ doit ()
     local HOMEDIRREPO=${THIS_DIR}/home
 
     mklnk ${HOMEDIRREPO}/_vimrc ${HOME}/.vimrc
+    mklnk ${HOMEDIRREPO}/_gvimrc ${HOME}/.gvimrc
     mklnk ${HOMEDIRREPO}/_gitconfig ${HOME}/.gitconfig
+
+    mklnk ${HOMEDIRREPO}/diffmerge ${HOME}/.diffmerge
 
 
     local vscode=${HOME}/.config/Code/User
