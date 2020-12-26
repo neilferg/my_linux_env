@@ -3,18 +3,18 @@
 [Window/Size]
 
 [Window/Size/Blank]
-w = 1347
-h = 735
+w=1110
+h=676
 maximized = 0
-x=15
-y=22
+x=185
+y=2
 
 [Window/Size/Folder]
-w = 683
-h = 384
-maximized=1
-x = -1
-y = -1
+w=1110
+h=676
+maximized = 0
+x = 185
+y = 2
 
 [Window/Size/Diff]
 w = 1347
@@ -31,9 +31,7 @@ x = 15
 y = 53
 
 [Folder]
-showflags=16
-subdirfilter = Binaries Debug Release _sgbak _sgvault objs .svn .git .bzr .hg .sgdrawer .sgcloset .ccache
-suffixfilter = a aps bsc bz2 cab chm dll dmg exe exp id idb ilk iso lib map mdp msi ncb nvram o obj ocx out pch pdb res sbr so tar tgz vcp vmdk vmem vmsd vmss zip pyc pyo
+showflags = 16
 
 [Folder/Color]
 
@@ -45,7 +43,7 @@ bg = 16777215
 fg = 2394145
 
 [Revision]
-check = 1608980608
+check=1608998516
 
 [Ruleset]
 
@@ -72,24 +70,26 @@ multilinedetaillevel = 1
 [File/View]
 linenumbers = 1
 displayop = 0
-pilcrow = 0
-
-[File/View/Diff]
-editsplitterorientation = 1
 
 [ExternalTools]
-serialized = 004201014201
+serialized=004201024c000000000353080000006776696d646966660453010000002a05420106530300000076696d0753230000002d64202d672022254c4546545f50415448252220222552494748545f504154482522200842000953000000000a53000000000b4c00000000014201
+dlginitialpage = 1
+enabletools = 1
+dontshowexecmsg = 1
 
 [Options]
 
 [Options/Dialog]
-initialpage = 7
+initialpage = 11
 
 [Dialog]
 
 [Dialog/Color]
 customcolors = ::::::::::::::::
 
+[Dialog/Find]
+icase = 1
+
 [License]
-check = 1608997377
+check = 1608998516
 

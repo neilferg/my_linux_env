@@ -13,14 +13,17 @@ if &diff
 
     set lines=35
     set columns=130
+    set noro
     syntax off
     set noshowmode
     set number
 
-    set diffopt=internal,filler,context:1000000
-    set diffopt+=algorithm:histogram
-    set diffopt+=indent-heuristic
-    " set diffopt+=iwhiteall
+    let g:diffopt_base = 'internal,filler,context:1000000'
+    let g:diffopt_algo = 'algorithm:histogram'
+    let g:diffopt_inden = 'indent-heuristic'
+    let g:diffopt_ws   = 'internal'
+
+    let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
 
     autocmd VimResized * exec "normal \<C-w>="
 endif

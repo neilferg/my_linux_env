@@ -15,8 +15,12 @@
 	default = simple
 [pull]
 	rebase = true
+[diff]
+	tool = gvimdiff
 [merge]
-	tool = diffmerge
+	tool = gvimdiff
+    ff = no
+    commit = no
 [mergetool "kdiff3NoAuto"]
 	cmd = kdiff3 --L1 \"$MERGED (Base)\" --L2 \"$MERGED (Local)\" --L3 \"$MERGED (Remote)\" -o \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
 [mergetool "diffmerge"]
@@ -24,8 +28,6 @@
         keepBackup = false
 	prompt = false
 	cmd = diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
-[diff]
-	tool = diffmerge
 [difftool "diffmerge"]
 	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [gui]

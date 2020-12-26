@@ -5,28 +5,37 @@ THIS_DIR=${THIS_SCRIPT%/*}
 
 # ----------------------------------------------
 
-set -x
+#set -x
+
+HOSTNAME=$(hostname)
+HOMEDIRREPO=${THIS_DIR}/home
 
 mklnk ()
 {
     local tgt=$1
     local lnk=$2
 
+    if [ -L ${lnk} ]; then
+        rm ${lnk}
+    else
+        rm -rf ${lnk}
+    fi
+
     mkdir -p $(dirname ${lnk})
-    ln -sf ${tgt} ${lnk}
+
+    ln -s ${tgt} ${lnk}
+}
+
+install_vim()
+{
+    mklnk ${HOMEDIRREPO}/_vim ${HOME}/.vim
 }
 
 doit ()
 {
-    local HOSTNAME=$(hostname)
-    local HOMEDIRREPO=${THIS_DIR}/home
+    install_vim
 
-    mklnk ${HOMEDIRREPO}/_vimrc ${HOME}/.vimrc
-    mklnk ${HOMEDIRREPO}/_gvimrc ${HOME}/.gvimrc
     mklnk ${HOMEDIRREPO}/_gitconfig ${HOME}/.gitconfig
-
-    mklnk ${HOMEDIRREPO}/diffmerge ${HOME}/.diffmerge
-
 
     local vscode=${HOME}/.config/Code/User
     mkdir -p ${vscode}

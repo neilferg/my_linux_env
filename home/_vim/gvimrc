@@ -1,0 +1,92 @@
+
+if &diff
+    function <SID>DiffAlgoHisto()
+        let g:diffopt_algo = 'algorithm:histogram'
+        let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
+    endfunction
+
+    function <SID>DiffAlgoPatience()
+        let g:diffopt_algo = 'algorithm:patience'
+        let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
+    endfunction
+
+    function <SID>DiffAlgoMyers()
+        let g:diffopt_algo = 'algorithm:myers'
+        let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
+    endfunction
+
+    function <SID>DiffAlgoMin()
+        let g:diffopt_algo = 'algorithm:minimal'
+        let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
+    endfunction
+
+    function <SID>IwhiteToggle()
+       if &diffopt =~ 'iwhite'
+           set diffopt-=iwhite
+       else
+           set diffopt+=iwhite
+       endif
+    endfunction
+
+
+    aunmenu ToolBar
+
+    an 1.30 ToolBar.SaveAll   :browse confirm wa<CR>
+    tmenu ToolBar.SaveAll     Save all files
+
+    an 1.40 ToolBar.-sep1-    <Nop>
+
+    amenu 1.42 ToolBar.HSplit   <C-w>J
+    tmenu ToolBar.HSplit Horz split
+
+    amenu 1.43 ToolBar.VSplit   <C-w>L
+    tmenu ToolBar.VSplit Horz split
+
+    an 1.44 ToolBar.-sep2-    <Nop>
+
+    an 1.50 ToolBar.Undo          u
+    an 1.60 ToolBar.Redo          <C-R>
+
+    an 1.65 ToolBar.-sep4-        <Nop>
+    vnoremenu 1.70 ToolBar.Cut        "+x
+    vnoremenu 1.80 ToolBar.Copy       "+y
+    cnoremenu 1.80 ToolBar.Copy       <C-Y>
+    nnoremenu 1.90 ToolBar.Paste      "+gP
+    cnoremenu  ToolBar.Paste      <C-R>+
+    exe 'vnoremenu <script>    ToolBar.Paste  ' . paste#paste_cmd['v']
+    exe 'inoremenu <script>    ToolBar.Paste  ' . paste#paste_cmd['i']
+
+    if !has("gui_athena")
+        an 1.95   ToolBar.-sep3-        <Nop>
+        an 1.100  ToolBar.Replace       :promptrepl<CR>
+        vunmenu   ToolBar.Replace
+        vnoremenu ToolBar.Replace       y:promptrepl <C-R>=<SID>FixFText()<CR><CR>
+        an 1.110  ToolBar.FindNext      n
+        an 1.120  ToolBar.FindPrev      N
+    endif
+
+    an 1.215 ToolBar.-sep5-       <Nop>
+
+    amenu 1.220 ToolBar.NextDiff ]c
+    tmenu ToolBar.NextDiff Next diff
+
+    amenu 1.230 ToolBar.PrevDiff [c
+    tmenu ToolBar.PrevDiff Next diff
+
+    an 1.245 ToolBar.-sep6-       <Nop>
+
+    amenu 1.250 ToolBar.DiffAlgo_Histo :call <SID>DiffAlgoHisto()<CR>
+    tmenu ToolBar.DiffAlgo_Histo Histogram diff
+
+    amenu 1.252 ToolBar.DiffAlgo_Patience :call <SID>DiffAlgoPatience()<CR>
+    tmenu ToolBar.DiffAlgo_Histo Patience diff
+
+    amenu 1.253 ToolBar.DiffAlgo_Myers :call <SID>DiffAlgoMyers()<CR>
+    tmenu ToolBar.DiffAlgo_Myers Myers diff
+
+    amenu 1.254 ToolBar.DiffAlgo_Min :call <SID>DiffAlgoMin()<CR>
+    tmenu ToolBar.DiffAlgo_Min Minimal diff
+
+    amenu 1.256 ToolBar.IwhiteToggle :call <SID>IwhiteToggle()<CR>
+    tmenu ToolBar.IwhiteToggle Toggle Whitespace ignore
+endif
