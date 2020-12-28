@@ -1,6 +1,6 @@
-hi Visual  guifg=#FFFFFF guibg=#0000FF gui=none
+hi Visual      guifg=#FFFFFF guibg=#0000FF gui=none
+hi DiffDelete  guifg=#000000 guibg=#E6E6FA gui=none
 
-hi DiffDelete guifg=#000000 guibg=#E6E6FA gui=none
 
 if &diff
 	" Show horizontal scrollbar
@@ -37,6 +37,9 @@ if &diff
 
     aunmenu ToolBar
 
+    an 1.20 ToolBar.Refresh   :diffu<CR>
+    tmenu ToolBar.Refresh     Refresh view
+
     an 1.30 ToolBar.SaveAll   :browse confirm wa<CR>
     tmenu ToolBar.SaveAll     Save all files
 
@@ -48,10 +51,10 @@ if &diff
     an 1.40 ToolBar.-sep2-    <Nop>
 
     amenu 1.42 ToolBar.HSplit   <C-w>J
-    tmenu ToolBar.HSplit Horz split
+    tmenu ToolBar.HSplit Horzontal layout
 
     amenu 1.43 ToolBar.VSplit   <C-w>L
-    tmenu ToolBar.VSplit Horz split
+    tmenu ToolBar.VSplit Vertical layout
 
     an 1.44 ToolBar.-sep3-    <Nop>
 
@@ -67,19 +70,19 @@ if &diff
     an 1.215 ToolBar.-sep5-       <Nop>
 
     amenu 1.250 ToolBar.DiffAlgo_Histo :call <SID>DiffAlgoHisto()<CR>
-    tmenu ToolBar.DiffAlgo_Histo Histogram diff
+    tmenu ToolBar.DiffAlgo_Histo Histogram diff algorithm
 
     amenu 1.252 ToolBar.DiffAlgo_Patience :call <SID>DiffAlgoPatience()<CR>
-    tmenu ToolBar.DiffAlgo_Histo Patience diff
+    tmenu ToolBar.DiffAlgo_Patience Patience diff algorithm
 
     amenu 1.253 ToolBar.DiffAlgo_Myers :call <SID>DiffAlgoMyers()<CR>
-    tmenu ToolBar.DiffAlgo_Myers Myers diff
+    tmenu ToolBar.DiffAlgo_Myers Myers diff algorithm
 
     amenu 1.254 ToolBar.DiffAlgo_Min :call <SID>DiffAlgoMin()<CR>
-    tmenu ToolBar.DiffAlgo_Min Minimal diff
+    tmenu ToolBar.DiffAlgo_Min Minimal diff algorithm
 
     amenu 1.256 ToolBar.IwhiteToggle :call <SID>IwhiteToggle()<CR>
-    tmenu ToolBar.IwhiteToggle Toggle Whitespace ignore
+    tmenu ToolBar.IwhiteToggle Toggle whitespace ignore
 
     an 1.259 ToolBar.-sep6-       <Nop>
 
@@ -87,6 +90,6 @@ if &diff
     tmenu ToolBar.NextDiff Next diff
 
     amenu 1.260 ToolBar.PrevDiff [c
-    tmenu ToolBar.PrevDiff Next diff
+    tmenu ToolBar.PrevDiff Prev diff
 
 endif
