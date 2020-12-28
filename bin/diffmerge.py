@@ -28,7 +28,8 @@ def launch(args, cfgdir = None):
     #print(tDelta)
     if tDelta > T_MAX:
         #print("Refresh ts (tNow=%d)" % (tNow))
-        cfg['License']['Check'] = str(tNow)
+        cfg['License']['check'] = str(tNow)
+        cfg['Revision']['check'] = str(tNow)
  
         with open(inifile, 'w') as fs:
             cfg.write(fs)
