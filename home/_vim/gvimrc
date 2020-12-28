@@ -1,5 +1,11 @@
+hi Visual  guifg=#FFFFFF guibg=#0000FF gui=none
+
+hi DiffDelete guifg=#000000 guibg=#E6E6FA gui=none
 
 if &diff
+	" Show horizontal scrollbar
+    set guioptions+=b
+
     function <SID>DiffAlgoHisto()
         let g:diffopt_algo = 'algorithm:histogram'
         let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
@@ -34,7 +40,12 @@ if &diff
     an 1.30 ToolBar.SaveAll   :browse confirm wa<CR>
     tmenu ToolBar.SaveAll     Save all files
 
-    an 1.40 ToolBar.-sep1-    <Nop>
+    an 1.35 ToolBar.-sep1-    <Nop>
+
+    amenu 1.36 ToolBar.ToggleLineNum   :set number!<CR>
+    tmenu ToolBar.ToggleLineNum Toggle line numbers
+
+    an 1.40 ToolBar.-sep2-    <Nop>
 
     amenu 1.42 ToolBar.HSplit   <C-w>J
     tmenu ToolBar.HSplit Horz split
@@ -42,22 +53,10 @@ if &diff
     amenu 1.43 ToolBar.VSplit   <C-w>L
     tmenu ToolBar.VSplit Horz split
 
-    an 1.44 ToolBar.-sep2-    <Nop>
-
-    an 1.50 ToolBar.Undo          u
-    an 1.60 ToolBar.Redo          <C-R>
-
-    an 1.65 ToolBar.-sep4-        <Nop>
-    vnoremenu 1.70 ToolBar.Cut        "+x
-    vnoremenu 1.80 ToolBar.Copy       "+y
-    cnoremenu 1.80 ToolBar.Copy       <C-Y>
-    nnoremenu 1.90 ToolBar.Paste      "+gP
-    cnoremenu  ToolBar.Paste      <C-R>+
-    exe 'vnoremenu <script>    ToolBar.Paste  ' . paste#paste_cmd['v']
-    exe 'inoremenu <script>    ToolBar.Paste  ' . paste#paste_cmd['i']
+    an 1.44 ToolBar.-sep3-    <Nop>
 
     if !has("gui_athena")
-        an 1.95   ToolBar.-sep3-        <Nop>
+        an 1.95   ToolBar.-sep4-        <Nop>
         an 1.100  ToolBar.Replace       :promptrepl<CR>
         vunmenu   ToolBar.Replace
         vnoremenu ToolBar.Replace       y:promptrepl <C-R>=<SID>FixFText()<CR><CR>
@@ -66,14 +65,6 @@ if &diff
     endif
 
     an 1.215 ToolBar.-sep5-       <Nop>
-
-    amenu 1.220 ToolBar.NextDiff ]c
-    tmenu ToolBar.NextDiff Next diff
-
-    amenu 1.230 ToolBar.PrevDiff [c
-    tmenu ToolBar.PrevDiff Next diff
-
-    an 1.245 ToolBar.-sep6-       <Nop>
 
     amenu 1.250 ToolBar.DiffAlgo_Histo :call <SID>DiffAlgoHisto()<CR>
     tmenu ToolBar.DiffAlgo_Histo Histogram diff
@@ -89,4 +80,13 @@ if &diff
 
     amenu 1.256 ToolBar.IwhiteToggle :call <SID>IwhiteToggle()<CR>
     tmenu ToolBar.IwhiteToggle Toggle Whitespace ignore
+
+    an 1.259 ToolBar.-sep6-       <Nop>
+
+    amenu 1.260 ToolBar.NextDiff ]c
+    tmenu ToolBar.NextDiff Next diff
+
+    amenu 1.260 ToolBar.PrevDiff [c
+    tmenu ToolBar.PrevDiff Next diff
+
 endif

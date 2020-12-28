@@ -26,4 +26,11 @@ if &diff
     let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
 
     autocmd VimResized * exec "normal \<C-w>="
+
+	" Map F3 to search (& replace)
+    imap <F3> <C-o>:promptrepl<CR>
+
+	" Map Save/Save all
+    imap <C-s> <C-o>:browse confirm w<CR>
+    imap <C-S-s> <C-o>:browse confirm wa<CR>
 endif
