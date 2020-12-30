@@ -1,14 +1,6 @@
-set nocompatible
-set tabstop=4
-
-set fillchars=fold:-,diff:/
-
-hi DiffAdd      gui=none    guifg=NONE          guibg=#e8ffd1
-hi DiffChange   gui=none    guifg=NONE          guibg=#ADD8E6
-hi DiffDelete   gui=bold    guifg=#000000       guibg=#E6E6FA
-hi DiffText     gui=none    guifg=#D20000       guibg=#FFD2C8
-
 if &diff
+    " Put the source evim first as we don't want it to override any
+    " setting changes that we make
     source $VIMRUNTIME/evim.vim
 
     set lines=35
@@ -34,3 +26,16 @@ if &diff
     imap <C-s> <C-o>:browse confirm w<CR>
     imap <C-S-s> <C-o>:browse confirm wa<CR>
 endif
+
+
+set nocompatible
+set tabstop=4
+set nobackup nowritebackup
+
+set fillchars=fold:-,diff:/
+
+hi DiffAdd      gui=none    guifg=NONE          guibg=#e8ffd1
+hi DiffChange   gui=none    guifg=NONE          guibg=#ADD8E6
+hi DiffDelete   gui=bold    guifg=#000000       guibg=#E6E6FA
+hi DiffText     gui=none    guifg=#D20000       guibg=#FFD2C8
+
