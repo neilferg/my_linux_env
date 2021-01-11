@@ -29,6 +29,8 @@ endif
 
 
 set nocompatible
+set expandtab
+set shiftwidth=4
 set tabstop=4
 set nobackup nowritebackup
 

@@ -45,7 +45,7 @@ if &diff
 
     an 1.35 ToolBar.-sep1-    <Nop>
 
-    amenu 1.36 ToolBar.ToggleLineNum   :set number!<CR>
+    amenu 1.36 ToolBar.ToggleLineNum   :windo set number!<CR>
     tmenu ToolBar.ToggleLineNum Toggle line numbers
 
     an 1.40 ToolBar.-sep2-    <Nop>
