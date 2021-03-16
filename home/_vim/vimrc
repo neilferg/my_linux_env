@@ -2,7 +2,21 @@ if &diff
     " Put the source evim first as we don't want it to override any
     " setting changes that we make
     source $VIMRUNTIME/evim.vim
+endif
 
+set nocompatible
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set nobackup nowritebackup
+set showmatch
+
+"set ignorecase                  " Ignores case when pattern matching
+"set smartcase                   " Ignores ignorecase when pattern contains uppercase characters
+"set hlsearch                    " Highlights search results
+"set shortmess-=S                " Show current/total search matches.
+
+if &diff
     set lines=35
     set columns=130
     set noro
@@ -10,12 +24,7 @@ if &diff
     set noshowmode
     set number
 
-    let g:diffopt_base = 'internal,filler,context:1000000'
-    let g:diffopt_algo = 'algorithm:histogram'
-    let g:diffopt_inden = 'indent-heuristic'
-    let g:diffopt_ws   = 'internal'
-
-    let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
+    set diffopt=internal,filler,context:1000000,algorithm:histogram,indent-heuristic
 
     autocmd VimResized * exec "normal \<C-w>="
 
@@ -28,11 +37,6 @@ if &diff
 endif
 
 
-set nocompatible
-set expandtab
-set shiftwidth=4
-set tabstop=4
-set nobackup nowritebackup
 
 set fillchars=fold:-,diff:/
 

@@ -6,33 +6,51 @@ if &diff
 	" Show horizontal scrollbar
     set guioptions+=b
 
-    function <SID>DiffAlgoHisto()
-        let g:diffopt_algo = 'algorithm:histogram'
-        let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
+    set guioptions-=a
+
+    set clipboard=unnamedplus
+
+
+    function! s:DiffClearAlgo()
+        set diffopt-=algorithm:histogram
+        set diffopt-=algorithm:patience
+        set diffopt-=algorithm:myers
+        set diffopt-=algorithm:minimal
     endfunction
 
-    function <SID>DiffAlgoPatience()
-        let g:diffopt_algo = 'algorithm:patience'
-        let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
+    function! s:DiffAlgoHisto()
+        call s:DiffClearAlgo()
+        set diffopt+=algorithm:histogram
     endfunction
 
-    function <SID>DiffAlgoMyers()
-        let g:diffopt_algo = 'algorithm:myers'
-        let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
+    function! s:DiffAlgoPatience()
+        call s:DiffClearAlgo()
+        set diffopt+=algorithm:patience
     endfunction
 
-    function <SID>DiffAlgoMin()
-        let g:diffopt_algo = 'algorithm:minimal'
-        let &diffopt=g:diffopt_base . ',' . g:diffopt_algo . ',' . g:diffopt_inden
+    function! s:DiffAlgoMyers()
+        call s:DiffClearAlgo()
+        set diffopt+=algorithm:myers
     endfunction
 
-    function <SID>IwhiteToggle()
+    function! s:DiffAlgoMin()
+        call s:DiffClearAlgo()
+        set diffopt+=algorithm:minimal
+    endfunction
+
+    function! s:IwhiteToggle()
        if &diffopt =~ 'iwhite'
            set diffopt-=iwhite
        else
            set diffopt+=iwhite
        endif
     endfunction
+
+
+" Toggle diff view on the left, center, or right windows
+nmap <silent> <leader>dl :call difftoggle#DiffToggle(1)<cr>
+nmap <silent> <leader>dm :call difftoggle#DiffToggle(2)<cr>
+nmap <silent> <leader>dr :call difftoggle#DiffToggle(3)<cr>
 
 
     aunmenu ToolBar
@@ -86,10 +104,24 @@ if &diff
 
     an 1.259 ToolBar.-sep6-       <Nop>
 
-    amenu 1.260 ToolBar.NextDiff ]c
+    amenu 1.300 ToolBar.DiffToggle1 :call difftoggle#DiffToggle(1)<cr>
+    tmenu ToolBar.DiffToggle1 Window 1
+
+    amenu 1.305 ToolBar.DiffToggle2 :call difftoggle#DiffToggle(2)<cr>
+    tmenu ToolBar.DiffToggle2 Window 2
+
+    amenu 1.310 ToolBar.DiffToggle3 :call difftoggle#DiffToggle(3)<cr>
+    tmenu ToolBar.DiffToggle3 Window 3
+
+    amenu 1.315 ToolBar.DiffToggleAll :windo :diffthis<cr>
+    tmenu ToolBar.DiffToggleAll All Windows
+
+    an 1.400 ToolBar.-sep7-       <Nop>
+
+    amenu 1.405 ToolBar.NextDiff ]c
     tmenu ToolBar.NextDiff Next diff
 
-    amenu 1.260 ToolBar.PrevDiff [c
+    amenu 1.410 ToolBar.PrevDiff [c
     tmenu ToolBar.PrevDiff Prev diff
 
 endif

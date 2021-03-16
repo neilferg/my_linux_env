@@ -1,0 +1,6 @@
+copy /opt/diffmerge
+
+apt-get install vim-gtk3
+
+
+/usr/local/bin: symlinks
