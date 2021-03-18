@@ -7,7 +7,7 @@ lsserials ()
 
     lsusb |
     while read -r line; do
-        if [ "${line}" != "${line##*Serial}" ]; then
+        if [ "${line}" != "${line##*Serial}" -o "${line}" != "${line##*UART}" ]; then
             bus=${line#Bus }
             bus=${bus%% *}
 
