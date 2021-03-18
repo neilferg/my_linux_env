@@ -77,7 +77,6 @@
     "clang.diagnostic.maxBuffer" : 1000000,
     "clang.diagnostic.delay": 1000,
     "gitlens.historyExplorer.enabled": true,
-    "editor.formatOnPaste": true,
     "editor.formatOnType": true,
     "editor.mouseWheelZoom": true,
     "editor.roundedSelection": true,
