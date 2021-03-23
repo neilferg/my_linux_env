@@ -18,7 +18,7 @@ def launch(args):
         diffmerge.launch(args, cfgdir=cfgdir)
     else:
         # The -c bit stops the "Editing 2 files" message
-        _args = [ VIM, '-d', '-g', args[0], '-c', 'vert diffsplit '+args[1] ]
+        _args = [ VIM, '-d', '-g', args[1], '-c', 'vert diffsplit '+args[0] ]
         os.execve(_args[0], _args, os.environ)
 
 
