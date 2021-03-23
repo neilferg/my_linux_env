@@ -2,6 +2,20 @@
 
 #set -x
 
+isSerial ()
+{
+    local usbinfo
+    usbinfo=$1
+
+    if [ "${usbinfo}" != "${usbinfo##*Serial}" -o \
+         "${usbinfo}" != "${usbinfo##*UART}" ]
+    then
+       return 0;
+    else
+       return 1;
+    fi
+}
+
 lsserials ()
 {
     local bus
@@ -10,7 +24,7 @@ lsserials ()
 
     lsusb |
     while read -r line; do
-        if [ "${line}" != "${line##*Serial}" ]; then
+        if isSerial "${line}"; then
             bus=${line#Bus }
             bus=${bus%% *}
 
