@@ -24,7 +24,11 @@ if &diff
     set noshowmode
     set number
 
-    set diffopt=internal,filler,context:1000000,algorithm:histogram,indent-heuristic
+    set diffopt=filler,context:1000000,indent-heuristic
+
+    if has("patch-8.1.0360")
+        set diffopt+=internal,algorithm:histogram
+    endif
 
     autocmd VimResized * exec "normal \<C-w>="
 
