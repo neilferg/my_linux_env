@@ -42,7 +42,10 @@ doit ()
     mklnk ${HOMEDIRREPO}/_config/Code/User/settings.json ${vscode}/settings.json 
     mklnk ${HOMEDIRREPO}/_config/Code/User/keybindings.json ${vscode}/keybindings.json 
 
-    if [ ${HOSTNAME} = "prune3" ]; then
+    if [ ${HOSTNAME} = "prune2" ]; then
+        mklnk ${HOMEDIRREPO}/_Xmodmap--msi ${HOME}/.Xmodmap
+        mklnk ${HOMEDIRREPO}/openbox-rc--s130.xml ${HOME}/.config/openbox/lxqt-rc.xml
+    elif [ ${HOSTNAME} = "prune3" ]; then
         mklnk ${HOMEDIRREPO}/_Xmodmap--s130 ${HOME}/.Xmodmap
         mklnk ${HOMEDIRREPO}/openbox-rc--s130.xml ${HOME}/.config/openbox/rc.xml
     else
