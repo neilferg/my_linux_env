@@ -1,0 +1,17 @@
+#!/bin/sh
+
+lnk () {
+    local src=$1
+    local lnk=$2
+
+    echo "ln -sf ${src} ${lnk}"
+    sudo ln -sf ${src} ${lnk}
+}
+
+cd /usr/local/bin
+
+lnk /home/neilferg/gitco/my_linux_env/bin/diffmerge.py diffmerge
+lnk /home/neilferg/gitco/my_linux_env/bin/diffmerge.py dm
+lnk /home/neilferg/gitco/my_linux_env/bin/gvimdiff.py gvimdiff
+lnk /home/neilferg/gitco/my_linux_env/bin/gvimdiff.py vd
+

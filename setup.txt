@@ -1,6 +1,13 @@
 copy /opt/diffmerge
 
-apt-get install vim-gtk3
+sudo apt-get install vim-gtk3 xdotool
 
 
 /usr/local/bin: symlinks
+
+# LxQt:
+
+Session Settings -> Autostart -> Add
+
+Name:    xmodmap
+Command: /usr/bin/xmodmap ~/.Xmodmap
