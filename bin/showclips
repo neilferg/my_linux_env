@@ -1,0 +1,6 @@
+#!/bin/sh
+printf "  PRIMARY: "
+xclip -o -selection primary -quiet
+printf "\nCLIPBOARD: "
+xclip -o -selection clipboard -quiet
+printf "\n"
