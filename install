@@ -47,7 +47,7 @@ doit ()
         mklnk ${HOMEDIRREPO}/openbox-rc--s130.xml ${HOME}/.config/openbox/lxqt-rc.xml
     elif [ ${HOSTNAME} = "prune3" ]; then
         mklnk ${HOMEDIRREPO}/_Xmodmap--s130 ${HOME}/.Xmodmap
-        mklnk ${HOMEDIRREPO}/openbox-rc--s130.xml ${HOME}/.config/openbox/rc.xml
+        mklnk ${HOMEDIRREPO}/openbox-rc--s130.xml ${HOME}/.config/openbox/lxqt-rc.xml
     else
         mklnk ${HOMEDIRREPO}/_Xmodmap ${HOME}/.Xmodmap
         mklnk ${HOMEDIRREPO}/openbox-rc.xml ${HOME}/.config/openbox/lubuntu-rc.xml
