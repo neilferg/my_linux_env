@@ -26,6 +26,31 @@ mklnk ()
     ln -s ${tgt} ${lnk}
 }
 
+sudo_cp_ifnecess ()
+{
+    local src="$1"
+    local dst="$2"
+    local doit=0
+
+    if [ ! -e "${dst}" ]; then
+        doit=1
+    else
+        cmp -s "${src}" "${dst}"
+        if [ $? -ne 0 ]; then
+            doit=1
+        fi
+    fi
+
+    if [ ${doit} -eq 1 ]; then
+        sudo cp "${src}" "${dst}"
+    fi
+}
+
+install_touchpad ()
+{
+    sudo_cp_ifnecess root/etc/X11/xorg.conf.d/40-libinput.conf /etc/X11/xorg.conf.d/40-libinput.conf
+}
+
 install_vim()
 {
     mklnk ${HOMEDIRREPO}/_vim ${HOME}/.vim
@@ -45,9 +70,11 @@ doit ()
     if [ ${HOSTNAME} = "prune2" ]; then
         mklnk ${HOMEDIRREPO}/_Xmodmap--msi ${HOME}/.Xmodmap
         mklnk ${HOMEDIRREPO}/openbox-rc--s130.xml ${HOME}/.config/openbox/lxqt-rc.xml
+        install_touchpad
     elif [ ${HOSTNAME} = "prune3" ]; then
         mklnk ${HOMEDIRREPO}/_Xmodmap--s130 ${HOME}/.Xmodmap
         mklnk ${HOMEDIRREPO}/openbox-rc--s130.xml ${HOME}/.config/openbox/lxqt-rc.xml
+        install_touchpad
     else
         mklnk ${HOMEDIRREPO}/_Xmodmap ${HOME}/.Xmodmap
         mklnk ${HOMEDIRREPO}/openbox-rc.xml ${HOME}/.config/openbox/lubuntu-rc.xml

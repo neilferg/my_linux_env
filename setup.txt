@@ -11,3 +11,6 @@ Session Settings -> Autostart -> Add
 
 Name:    xmodmap
 Command: /usr/bin/xmodmap ~/.Xmodmap
+
+nmcli connection show
+nmcli connection modify {connectionUUID} wifi.hidden yes
