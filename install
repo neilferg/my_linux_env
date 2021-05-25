@@ -46,11 +46,6 @@ sudo_cp_ifnecess ()
     fi
 }
 
-install_touchpad ()
-{
-    sudo_cp_ifnecess root/etc/X11/xorg.conf.d/40-libinput.conf /etc/X11/xorg.conf.d/40-libinput.conf
-}
-
 install_vim()
 {
     mklnk ${HOMEDIRREPO}/_vim ${HOME}/.vim
@@ -70,11 +65,9 @@ doit ()
     if [ ${HOSTNAME} = "prune2" ]; then
         mklnk ${HOMEDIRREPO}/_Xmodmap--msi ${HOME}/.Xmodmap
         mklnk ${HOMEDIRREPO}/openbox-rc--s130.xml ${HOME}/.config/openbox/lxqt-rc.xml
-        install_touchpad
     elif [ ${HOSTNAME} = "prune3" ]; then
         mklnk ${HOMEDIRREPO}/_Xmodmap--s130 ${HOME}/.Xmodmap
         mklnk ${HOMEDIRREPO}/openbox-rc--s130.xml ${HOME}/.config/openbox/lxqt-rc.xml
-        install_touchpad
     else
         mklnk ${HOMEDIRREPO}/_Xmodmap ${HOME}/.Xmodmap
         mklnk ${HOMEDIRREPO}/openbox-rc.xml ${HOME}/.config/openbox/lubuntu-rc.xml
